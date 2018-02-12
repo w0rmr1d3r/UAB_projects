@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crawler</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>List of the images of the website</h1>
+    <table>
+      <tr><th>Image name</th> <th>Image size in bytes</th></tr>
+      <%        
+        //TODO-crawler-1
+        // use forEach js funtion to iterate over result.
+        var totalSize = 0;
+        var odd = 1;
+        details.forEach(function(entry) {
+          totalSize += parseInt(entry.size);
+          if (odd % 2 == 0) {
+            %>
+            <tr><td> <%= entry.name %> </td><td> <%= entry.size %> </td></tr>
+            <%
+          } else {
+            %>
+            <tr class="odd"><td> <%= entry.name %> </td><td> <%= entry.size %> </td></tr>
+            <%
+          }
+          odd++;
+          });
+      %>
+        <tr class="total"><td> <p>Total Size:</p> </td><td> <%= totalSize %> </td></tr>
+     </table>
+    <form method="get" action="/">
+      <input type="submit" value="search again" />
+    </form>
+  </body>
+</html>

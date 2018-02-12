@@ -1,0 +1,20 @@
+var http = require("http");
+fs = require('fs');
+var counter = 0;
+function f (req, res) {
+  res.writeHead(200, {"Content-Type": "text/plain"});
+
+  setTimeout(numeros, 1000);
+  function numeros () {
+          fs.appendFile('prueba.txt',counter);
+          console.log(counter);
+          counter++;
+          if (counter < 9) {
+            setTimeout(numeros, 1000);
+          }
+      }
+
+  res.end();
+}
+http.createServer(f).listen(8081);
+console.log("Server is listening");

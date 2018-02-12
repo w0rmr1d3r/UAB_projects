@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:f = "http://java.sun.com/jsf/core"
+	xmlns:h = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+	
+   <h:head>
+      <title>Welcome</title>
+   </h:head>
+
+   <body>
+       <section id="main">
+        <h1>Welcome</h1>
+        <h:outputText value="#{userlogin.login}" />
+        <br />
+        <h:outputText id="dilbertsay" value="#{dilbertcontroller.randomSay}" />
+        <br />
+        <h:form>
+        <h:commandButton value="Another Dilbert Say">
+            <f:ajax execute="#{dilbertcontroller.randomSay}" render="dilbertsay" />
+        </h:commandButton>
+        </h:form>
+        <br />
+        <h:form>
+            <h:commandButton value="Logout" action="#{userlogincontroller.logout}" />
+        </h:form>  
+       </section>
+
+   </body>
+</html>

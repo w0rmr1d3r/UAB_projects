@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Weather Forecast</title>
+	<h:outputStylesheet library="css" name="style.css" />
+  <!-- TODO --> 
+  <h:outputScript name="jquery-3.1.1.min.js" library="js" />
+      <h:outputScript name="websockets.js" library="js" />
+</h:head>
+
+<body>
+	<h1>Current week forecast</h1>
+	<h:form prependId="false">
+	
+		<div>
+		<h:outputText value="View in " />
+		  <!-- TODO -->
+		<h:form prependId="false">
+	    	<h:commandButton 
+	    	value="Cº" 
+	    	id="celsiusButton" 
+	    	disabled="#{forecastController.isCelsius()}"
+	    	action="#{forecastController.switchScale}">
+				<f:ajax render="@this forecasttable farenheitButton"/>
+	    	</h:commandButton>
+	        <h:commandButton 
+	        value="Fº" 
+	        id="farenheitButton" 
+	        disabled="#{!forecastController.isCelsius()}" 
+	        action="#{forecastController.switchScale}">
+	        	<f:ajax execute="msg" render="@this forecasttable celsiusButton"/>
+	        </h:commandButton>
+        </h:form>
+		</div>
+		<hr />
+		
+		<div>
+		<table id="forecasttable">
+			<tr>
+				<th>Monday</th>
+				<th>Tuesday</th>
+				<th>Wednesday</th>
+				<th>Thursday</th>
+				<th>Friday</th>
+				<th>Saturday</th>
+				<th>Sunday</th>
+			</tr>
+			<tr>
+	       <!-- Use the styleClass="event"  to show the event: sunny, rainy, in red -->
+	       <!-- Use the styleClass="temperature"  to show the temperature -->
+				 <!-- TODO -->
+				 
+				 <ui:repeat value="#{forecastController.weekForecast}" var="day">
+				 <td>
+					<h:outputText 
+					value="#{day.event}"
+					styleClass="event"></h:outputText>
+					<br/>
+					<h:outputText 
+					value="#{day.temperature}"
+					styleClass="temperature"></h:outputText>
+					</td>
+				</ui:repeat>
+				
+			</tr>
+		</table>
+		</div>
+	</h:form>
+	<hr />
+	
+	<div>
+		<h2>Alerts for today</h2>
+		<!-- TODO user attribute cols=80 and rows=10 for the textarea -->
+		<TEXTAREA rows="10" cols="80" id="textareaID"></TEXTAREA>
+	</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:f = "http://java.sun.com/jsf/core"
+	xmlns:h = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title>Index</title>
+   </h:head>
+
+   <body>
+      <p>Login</p>
+      <h:form>
+      	<h:outputLabel value="login" />
+      	<h:inputText value="#{userlogin.login}"/>
+      	<h:outputLabel value="passwd" />
+      	<h:inputSecret value="#{userlogin.passwd}" />
+      	<h:commandButton value="OK" action="#{userlogincontroller.loginUser()}" />
+      </h:form>
+   </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<meta charset="UTF-8" />
+	<title>Alerts publisher</title>
+</h:head>
+
+<body>
+	<h1>Alerts publisher</h1>
+
+	<h:form prependId="false">
+		<h2>Publish an alert</h2>
+      <h:selectOneMenu id="selectedAlert" value="#{alertController.message}">
+      <f:selectItems value="#{alertController.alertType}" />
+    </h:selectOneMenu>
+    <h:commandButton value="publish" action="#{alertController.triggerAlert}">
+      <f:ajax execute="selectedAlert"/>
+    </h:commandButton>
+	</h:form>
+</body>
+</html>

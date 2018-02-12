@@ -1,0 +1,11 @@
+{
+  "name": "zipArchiver",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "archiver": "^1.3.0"
+  }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:f = "http://java.sun.com/jsf/core"
+	xmlns:h = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title>User login</title>
+   </h:head>
+
+   <body>
+      <p>Login</p>
+      <h:form prependId="false">
+      	<h:outputLabel value="#{userlogincontroller.getErrMsg()}" />
+      	<br />
+      	<h:outputLabel value="Name:" />
+      	<br />
+      	<h:inputText value="#{userlogin.name}"/>
+      	
+      	<h:selectOneMenu id="select-category" value="#{userlogin.selectedCategory}" 
+   			valueChangeListener="#{userlogincontroller.categoryChanged}">
+   			<f:selectItems value="#{userlogincontroller.categories}" />
+   			<f:ajax event="valueChange" render="select-product"></f:ajax>
+		</h:selectOneMenu>
+		
+      	<h:selectOneMenu id="select-product" value="#{userlogin.selectedProduct}">
+   			<f:selectItems value="#{userlogincontroller.products}" />
+		</h:selectOneMenu>
+		
+      	<br />
+      	<h:commandButton value="Start chat" action="#{userlogincontroller.createConversation}">
+      		<f:ajax execute="@form" render="@all"/>
+      	</h:commandButton>
+      </h:form>
+   </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+	xmlns:f = "http://java.sun.com/jsf/core"
+	xmlns:h = "http://java.sun.com/jsf/html"
+	xmlns:ui = "http://java.sun.com/jsf/facelets">
+   <h:head>
+      <title>Operator Chat</title>
+      <h:outputScript name="jquery-3.1.1.min.js" library="js" />
+      <h:outputScript name="websockets.js" library="js" />
+   </h:head>
+
+   <body>
+      <p>THIS IS THE OPERATOR CHAT</p>
+      <h:form prependId="false">
+	  	<br/>
+	  	<p><h:outputText value="#{operatorchat.history}" id="chat-history" style="white-space: pre-wrap;"/></p>
+		<br/>
+		<br/>
+      	<h:inputText id="message-to-send"/>
+      	<h:commandButton value="SEND Message" id="sendButton" onclick="sendChatMessage();" disabled="#{operatorchatcontroller.disableSendButton()}">
+			<f:ajax execute="msg"/>		
+		</h:commandButton>
+      </h:form>
+      <br/>
+	  <br/>
+      <h:form prependId="false" id="conversation-list">
+        <p>CONNECTED CLIENTS HERE</p>
+        <section id="chat-list">
+			<ui:repeat value="#{operatorchat.conversations}" var="ConvD">
+				<h:commandLink 
+				value="#{ConvD.userNameAndProduct}" 
+				action="#{operatorchatcontroller.changeToConversation(ConvD)}" 
+				style="#{ConvD.conversationLinkStyle}">
+				  <f:ajax render="chat-history conversation-list"></f:ajax>
+				</h:commandLink>
+				<br />
+			</ui:repeat>
+		</section>
+		<h:commandButton value="REFRESH USERS" id="hidden-refresh" action="#{operatorchatcontroller.refreshConversations}" style="display: none;">
+			<f:ajax execute="msg" render="conversation-list closeButton chat-history sendButton"/>
+		</h:commandButton>
+      </h:form>
+      <br/>
+	  <br/>
+      <h:form prependId="false">
+	    <h:commandButton value="CLOSE SESSION" id="closeButton" action="operatorLogin.xhtml?faces-redirect=true" onclick="closeChatSession();" disabled="#{operatorchatcontroller.isAllowedToLogout()}">
+		 
+		</h:commandButton>
+      </h:form>
+      <h:form prependId="false">
+          <h:inputHidden id="personName" value="#{operatorlogin.login}"></h:inputHidden>
+          <h:inputHidden id="personId" value="#{operatorlogin.operatorId}"></h:inputHidden>
+      </h:form>
+   </body>
+</html>

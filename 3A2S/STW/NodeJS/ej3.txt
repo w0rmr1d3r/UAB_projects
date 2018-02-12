@@ -1,0 +1,54 @@
+var http = require("http");
+
+var counter = 0
+function f (req, res) {
+  res.writeHead(200, {"Content-Type": "text/plain"});
+  //TODO
+  
+  setTimeout(puntos, 1000);
+  function puntos () {
+          console.log(".");
+          counter++;
+          if (counter < 9) {
+            setTimeout(puntos, 1000);
+          }
+      }
+      
+ 
+  res.end();
+}
+
+function q (req, res) {
+  res.writeHead(200, {"Content-Type": "text/plain"});
+  //TODO
+  
+  setTimeout(numeros, 1000);
+  function numeros () {
+          console.log(counter);
+          counter++;
+          if (counter < 9) {
+            setTimeout(numeros, 1000);
+          }
+      }
+      
+  
+  
+  res.end();
+}
+
+function GeneradorBarresDeProgres(flaggy) {
+    this.novaBarra = function(num) {
+        if (flaggy == true) {
+            return f
+        } else {
+            return q
+        }
+    } 
+}
+
+
+gbp = new GeneradorBarresDeProgres(false)
+func = gbp.novaBarra(10)
+
+http.createServer(func).listen(8081);
+console.log("Server is listening");
