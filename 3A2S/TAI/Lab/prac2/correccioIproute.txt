@@ -1,0 +1,82 @@
+﻿Hola,
+
+Com sempre anem molt apurats de temps per corregir les pràctiques, 
+us demano que
+quan arribeu a classe seguiu aquestes passes i m'aviseu per corregir-vos un cop
+ les hagueu executat.
+
+
+
+En el Router, node n2:
+1-.
+
+Obriu tres consoles.
+
+La primera consola la utilitzareu per a executar comandes, 
+en la segona i 
+tercera consola, executeu, respectivament, les comandes:
+
+watch -n 1 tc -s qdisc show dev eth0
+
+watch -n 1 tc -s qdisc show dev eth1
+
+2-.
+
+
+Executeu els scripts:
+
+a)canviaBalanceig 7 3 
+
+b)activaEmmascarament.sh
+
+c)activaAmpleDeBanda.sh
+
+d)resetAmpleDeBandaRouter.sh
+
+
+
+En la workstation, departament2, node n6:
+2.5-.
+
+Executeu un ping a 8.8.8.8
+
+3-.
+
+
+Vegeu que els paquest s'estan encuant en la cua associada a la xarxa 
+192.168.2.64/27.
+
+
+
+Canceleu el ping del client.
+
+4-. 
+
+Des del Router feu un ping a 8.8.8.8. 
+
+Vegeu que els paquets van cap a la cua
+ que té l'ample de banda màxim.
+
+5-. 
+
+Executeu el script modificaAccesPerSubxarxa.sh i talleu l'accés a internet 
+a la xarxa del departament2, 192.168.2.64/27.
+
+6-. 
+
+Torneu a la workstation del departament2, i proveu de fer un ping a 8.8.8.8. 
+
+Comproveu que no hi podeu accedir.
+
+7-. 
+Executeu de nou l'escript modificaAccesPerSubxarxa.sh i ara permeteu 
+que la subxarxa2 sí que pugui accedir a internet. 
+
+
+Comproveu, des de la workstation, que efectivament podeu sortir cap a internet.
+
+8-. 
+Executeu l'escript modificaAmpleDeBandaPerSubxarxa.sh i associeu-li a la cua 
+associada a la subxarxa2 333kbits. 
+Comproveu, tot anant a les consoles a on 
+teniu executant-se la comanda tc qdisc show, que s'han aplicat els canvis
