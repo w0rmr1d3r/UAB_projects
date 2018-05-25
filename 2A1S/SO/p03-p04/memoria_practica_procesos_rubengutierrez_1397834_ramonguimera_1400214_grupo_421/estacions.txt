@@ -1,0 +1,11 @@
+1 nomuno 4
+2 nomdos 5
+3 nomtres 6
+4 nomcuatro 7
+5 nomcinco 8
+6 nomseis 9
+7 nomsiete 11
+8 nomocho 56
+9 nomnueve 1
+10 nomdiez 66
+

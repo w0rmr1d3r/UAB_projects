@@ -1,0 +1,11 @@
+2 nomdos 23
+1 nomuno 48
+4 nomcuatro 39
+3 nomtres 8
+5 nomcinco 0
+6 nomseis 7
+7 nomsiete 3
+9 nomnueve 37
+8 nomocho 41
+10 nomdiez 39
+Numero: 5 Nom: nomcinco Temperatura: 0
